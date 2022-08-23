@@ -15,7 +15,7 @@ last_sent_message_minute = -1
 while True:
     now = datetime.datetime.now()
 
-    if now.day != last_sent_message_day and now.hour == 14 and now.minute == 30:
+    if now.day != last_sent_message_day and now.hour == 19 and now.minute == 15:
         last_sent_message_day = now.day
         client.chat_postMessage(channel="#announcements", text=msg_text)
 
