@@ -6,7 +6,8 @@ import datetime
 
 env_path = Path(".") / ".env"
 load_dotenv(dotenv_path=env_path)
-msg_text = "<@U03L1REEJDC> <@U03L8C3RZ0B> <@U03L27ZH2J2> Herkesi toplantıya bekliyoruz."
+saturday_msg_text = "<@U03L1REEJDC> <@U03L8C3RZ0B> <@U03L27ZH2J2> Herkesi toplantıya bekliyoruz."
+msg_text = "<@U03L8C3RZ0B> <@U03L27ZH2J2> Herkesi toplantıya bekliyoruz."
 
 client = slack.WebClient(token=os.environ["API_TOKEN"])
 last_sent_message_day = -1
@@ -17,7 +18,12 @@ while True:
 
     if now.day != last_sent_message_day and now.hour == 19 and now.minute == 15:
         last_sent_message_day = now.day
-        client.chat_postMessage(channel="#announcements", text=msg_text)
+        if datetime.datetime.today().weekday() == 5: # if today is Saturday
+            client.chat_postMessage(channel="#announcements", text=saturday_msg_text)
+        else if datetime.datetime.today().weekday() == 6: # everyone deserves a break on Sundays
+            pass
+        else:
+            client.chat_postMessage(channel="#announcements", text=msg_text)
 
     if now.minute != last_sent_message_minute and now.minute % 5 == 0:
         print(now)
