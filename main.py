@@ -6,8 +6,8 @@ import datetime
 
 env_path = Path(".") / ".env"
 load_dotenv(dotenv_path=env_path)
-saturday_msg_text = "<@U03L1REEJDC> <@U03L8C3RZ0B> <@U03L27ZH2J2> Herkesi toplantıya bekliyoruz."
-msg_text = "<@U03L8C3RZ0B> <@U03L27ZH2J2> Herkesi toplantıya bekliyoruz."
+saturday_msg_text = "<@U03L1REEJDC> <@U03L8C3RZ0B> <@U03L27ZH2J2> This is a reminder for the meeting."
+msg_text = "<@U03L8C3RZ0B> <@U03L27ZH2J2> This is a reminder for the meeting."
 
 client = slack.WebClient(token=os.environ["API_TOKEN"])
 last_sent_message_day = -1
